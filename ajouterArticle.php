@@ -1,3 +1,40 @@
+<?php 
+    include("manage/ConnexionDb.php");
+    $errors = array('autheur' =>'', 'titre' => '', 'description' =>'', 'corps' => '' );
+    if(isset($_POST['submit'])) {
+        if(empty($_POST['autheur'])) {
+            $errors['autheur'] = "autheur requis";
+        } 
+        if(empty($_POST['titre'])){
+            $errors['titre'] = "titre requis";    
+        }
+        if(empty($_POST['description'])){
+            $errors['description'] = "description requis";
+        }
+        if(empty($_POST['corps'])){
+            $errors['corps'] = "corps requis";
+        }
+
+        if(array_filter($errors)) {
+            // afficher 'erreur
+
+        } else {
+            $autheur = mysqli_real_escape_string($conn, $_POST['autheur']);
+            $titre = mysqli_real_escape_string($conn, $_POST['titre']);
+            $description = mysqli_real_escape_string($conn, $_POST['description']);
+            $corps = mysqli_real_escape_string($conn, $_POST['corps']);
+
+            $sql = "INSERT INTO article(autheur,titre,description,corps) VALUES ('$autheur','$titre','$description','$corps')";
+            if(mysqli_query($conn, $sql)) {
+                header('Location:index.php');
+            } else {
+                echo 'query error:' . mysqli_error($conn);
+            }
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,27 +46,32 @@
     <title>Ajouter un article</title>
 </head>
 <body>
+    
     <?php include("templates/header.php") ?>
     <div class="signin">
-        <form action="signin.php" method="post">
+        <form action="ajouterArticle.php" method="POST">
             <div class="form-group">
                 <label for="autheur">Autheur</label>
                 <input type="text" id="autheur" name="autheur">
+                <span class="error"><?php echo $errors['autheur']?></span>
             </div>
             <div class="form-group">
                 <label for="titre">Titre</label>
                 <input type="text" id="titre" name="titre">
+                <span class="error"><?php echo $errors['titre']?></span>
             </div>
             <div class="form-group">
                 <label for="description">description</label>
                 <input type="text" id="description" name="description">
+                <span class="error"><?php echo $errors['description']?></span>
             </div>
             <div class="form-group">
                 <label for="corps">Article</label>
                 <input type="textarea" id="corps" name="corps">
+                <span class="error"><?php echo $errors['corps']?></span>
             </div>
             <div class="btn-signin">
-                <button type="submit">Enregistrer</button>
+                <button type="submit" name="submit">Enregistrer</button>
             </div>
         </form>
     </div>

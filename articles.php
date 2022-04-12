@@ -22,11 +22,15 @@
 </head>
 <body>
     <?php include("templates/header.php")?>
+    <div class="articles">
     <h1>liste des articles</h1>
-    <?php foreach ($articles as $article) {?>
-        <p>Ecrite par<?php echo $article['autheur'] ?></p>
-        <p><?php echo $article['description'] ?></p>
-    <?php }?>
+        <?php foreach ($articles as $article) {?>
+            <div class="article">
+            <p>Ecrite par<?php echo $article['autheur'] ?></p>
+            <p><?php echo $article['description'] ?></p>
+            </div>       
+        <?php }?>
+    </div>
 	<script src="app.js"></script>
 </body>
 </html>
