@@ -7,13 +7,16 @@
 
 body {
     background-color: whitesmoke;
+    height: 100vh;
 }
+
 nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
     height: 50px;
+    position: relative;
 }
 
 .logo img{
@@ -30,7 +33,7 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
+    width: 40%;
 }
 
 .nav-links .signin {
@@ -221,7 +224,7 @@ nav {
 }
 
 /* error */
-.form-group .error {
+.signin .error {
     color: crimson;
     font-size: 0.7em;
 }
@@ -232,7 +235,6 @@ nav {
     flex-direction: column;
     margin: 40px;
     max-width: 700px;
-
 }
 /* article */
 .article {
@@ -240,4 +242,141 @@ nav {
     background-color: #fff;
     padding: 15px;
     border-radius: 10px;
+}
+
+.article .auteur {
+    font-size: 0.9em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.btn-afficher-plus {
+    margin-top: 10px;
+    outline: none;
+    border: none;
+    color: #999;
+    background-color: crimson;
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.btn-afficher-plus a{
+    text-decoration: none;
+    color: #fff;  
+    cursor: pointer;
+}
+
+.singleArticle {
+    margin: auto;
+    max-width: 900px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border-radius: 7px;
+    background-color: #fff;
+}
+
+.singleArticle span {
+    color: crimson;
+    margin-bottom: 10px;
+}
+
+.singleArticle .auteur {
+    margin-bottom: 10px;
+}
+
+.singleArticle h5 {
+    margin-bottom: 10px;
+}
+
+.singleArticle article {
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+#dropdown {
+    color: crimson;
+    cursor: pointer;
+}
+
+.user {
+    position: absolute;
+    top: 45px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 7px;
+    font-size: 0.8em;
+    background-color: #fff;
+    display: none;
+}
+
+.drop-user {
+    display: block;
+}
+
+.deconnexion{
+    margin-top: 15px;
+}
+
+/* jumbotron */
+.jumbotron {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    color: #aaa;
+    background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)), url("./images/jumbotron2.jpg");
+}
+
+.btn-jumbotron {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn-jumbotron p{
+    margin-top: 25px;
+}
+
+.btn-jumbotron .btn1{
+    outline: none;
+    border-style: none;
+    padding: 10px;
+    background-color: crimson;
+    color: #aaa;
+    border-radius: 2px;
+    width: 150px;
+    line-height: 25px;
+}
+
+.btn-jumbotron .btn2{
+    outline: none;
+    border-style: none;
+    padding: 10px;
+    border: 1px solid rgb(248, 89, 121);
+    color: #333;
+    border-radius: 4px;
+    width: 150px;
+    line-height: 25px;
+    background-color: whitesmoke;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* topbar */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 15px;
+}
+.topbar .topbarlogo {
+    font-size: 1em;
+
+}
+
+.topbar .text {
+    letter-spacing: 2px;
+    font-size: 0.9em;
 }

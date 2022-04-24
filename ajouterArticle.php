@@ -1,6 +1,7 @@
 <?php 
     include("manage/ConnexionDb.php");
     $errors = array('autheur' =>'', 'titre' => '', 'description' =>'', 'corps' => '' );
+    session_start();
     if(isset($_POST['submit'])) {
         if(empty($_POST['autheur'])) {
             $errors['autheur'] = "autheur requis";
@@ -14,7 +15,7 @@
         if(empty($_POST['corps'])){
             $errors['corps'] = "corps requis";
         }
-
+        
         if(array_filter($errors)) {
             // afficher 'erreur
 
@@ -41,18 +42,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="app.js" defer></script>
+	<link rel="stylesheet" type="text/css" href="assets/import.css">
+    <!-- <script src="javascript/article.js" defer></script> -->
     <title>Ajouter un article</title>
 </head>
 <body>
-    
+    <?php include("templates/topbar.php") ?>
     <?php include("templates/header.php") ?>
     <div class="signin">
-        <form action="ajouterArticle.php" method="POST">
+        <form action="ajouterArticle.php" method="POST" id="ajouterArticle">
+            <div id="errorMessages"></div>
             <div class="form-group">
-                <label for="autheur">Autheur</label>
-                <input type="text" id="autheur" name="autheur">
+                <label for="autheur">Auteur</label>
+                <input type="text" id="autheur" name="autheur" value="<?php echo $_SESSION['nom']?>">
                 <span class="error"><?php echo $errors['autheur']?></span>
             </div>
             <div class="form-group">
@@ -75,5 +77,6 @@
             </div>
         </form>
     </div>
+    <?php include("templates/footer.php")?>
 </body>
 </html>
